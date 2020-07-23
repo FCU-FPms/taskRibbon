@@ -1,0 +1,14 @@
+server:
+  port: 0 # 這會產生隨機port號
+
+spring:
+  application:
+    name: task-cunsumer
+
+eureka:
+  instance:
+    prefer-ip-address: true #以IP地址註冊到服務中心
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://140.134.26.71:50608/eureka/
