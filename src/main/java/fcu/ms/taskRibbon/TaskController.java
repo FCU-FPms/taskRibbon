@@ -12,29 +12,15 @@ import reactor.core.publisher.Mono;
 @RestController
 
 public class TaskController {
+    @Autowired
+    private WebClient.Builder webClientBuilder;
 
-//    @LoadBalanced
     @GetMapping("/tasks")
     public void getTasks() {
-        String baseUrl = "http://140.134.26.71:41394";
-        WebClient webClient = WebClient.create(baseUrl);
-        Mono<String> mono = webClient.get().uri("tasks").retrieve().bodyToMono(String.class);
+        Mono<String> mono = webClientBuilder.build().get().uri("http://MS-PROVIDER-DEVELOP/tasks")
+                .retrieve().bodyToMono(String.class);
         System.out.println("Franky-test");
         mono.subscribe(System.out::println);
     }
-
-//
-//    @Autowired
-//    private WebClient.Builder webClientBuilder;
-//    @GetMapping("/tasks")
-//    public void getTasks() {
-//        String baseUrl = "http://140.134.26.71:41394";
-//        DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory(baseUrl);
-//        WebClient webClient = this.webClientBuilder.uriBuilderFactory(factory).build();
-//
-//        Mono<String> mono = webClient.get().uri("tasks").retrieve().bodyToMono(String.class);
-//        System.out.println("Franky-test");
-//        mono.subscribe(System.out::println);
-//    }
 
 }
