@@ -1,5 +1,5 @@
 server:
-  port: 0 # 這會產生隨機port號
+  port: 0
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
 
 eureka:
   instance:
-    prefer-ip-address: true #以IP地址註冊到服務中心
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     serviceUrl:
